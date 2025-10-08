@@ -1464,7 +1464,7 @@ def main():
         description='Enhanced MISP to STIX/TAXII Pipeline with dual version support',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
-Examples:
+Usage:
   %(prog)s --tag APT                     # Process APT-tagged events continuously
   %(prog)s --tag ransomware --once       # Single run for ransomware events
   %(prog)s --feedback malicious.com:false_positive  # Update sighting feedback

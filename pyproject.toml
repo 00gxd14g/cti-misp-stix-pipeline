@@ -6,10 +6,10 @@ readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [
-    {name = "SOC Team", email = "soc@example.com"}
+    {name = "SOC Team", email = "security@yourdomain.com"}
 ]
 maintainers = [
-    {name = "SOC Team", email = "soc@example.com"}
+    {name = "SOC Team", email = "security@yourdomain.com"}
 ]
 keywords = [
     "threat-intelligence",

@@ -226,13 +226,13 @@ All configuration options can be overridden using environment variables:
 - `REDIS_DB`: Redis database number
 - `REDIS_PASSWORD`: Redis password
 
-### Example with Environment Variables
+### Using Environment Variables
 
 ```bash
-export MISP_URL="https://misp.example.com"
+export MISP_URL="https://your-misp-server.com"
 export MISP_KEY="your-api-key"
-export TAXII2_SERVER="https://taxii.example.com"
-export REDIS_HOST="redis.example.com"
+export TAXII2_SERVER="https://your-taxii-server.com"
+export REDIS_HOST="redis-server.local"
 
 cti-pipeline --tag APT --once
 ```
@@ -261,9 +261,9 @@ cti-pipeline --tag APT --feedback malicious.com:false_positive
 cti-pipeline --tag APT --feedback 192.168.1.1:true_positive
 ```
 
-### Basic Usage Examples
+### Basic Usage Scenarios
 
-#### Example 1: Process APT Events Once
+#### Scenario 1: Process APT Events Once
 
 ```bash
 cti-pipeline --tag APT --once
@@ -276,7 +276,7 @@ This will:
 4. Publish to configured TAXII servers
 5. Save state and exit
 
-#### Example 2: Run as Daemon
+#### Scenario 2: Run as Daemon
 
 ```bash
 cti-pipeline --tag "tlp:amber"
@@ -288,7 +288,7 @@ This will:
 3. Maintain state between runs
 4. Automatically resume after errors
 
-#### Example 3: Docker Deployment
+#### Scenario 3: Docker Deployment
 
 ```bash
 # Create config directory
@@ -301,7 +301,7 @@ cp config.ini /opt/misp-pipeline/
 docker run -d \
   --name misp-taxii-pipeline \
   -v /opt/misp-pipeline:/app/config \
-  -e MISP_URL="https://misp.example.com" \
+  -e MISP_URL="https://your-misp-server.com" \
   -e MISP_KEY="your-api-key" \
   misp-taxii-pipeline --tag APT
 ```
@@ -413,7 +413,7 @@ Override Score Calculation:
 Threshold: 50 points (configurable)
 ```
 
-**Example Scenarios:**
+**Usage Scenarios:**
 
 1. **Blocked but Overridden**: GitHub domain blocked by warninglist, but tagged as C2 for APT28 campaign → Override with score 70
 2. **Blocked and Filtered**: RFC1918 private IP with no context → Filtered, score 0
@@ -516,7 +516,7 @@ Identifies malicious use of legitimate infrastructure:
 **Detection Logic:**
 ```python
 if domain in legitimate_services and tag in abuse_indicators:
-    # Examples:
+    # Common patterns:
     # - github.com + "c2" tag → Abuse detected
     # - 8.8.8.8 + "dns-tunnel" tag → Abuse detected
 ```
@@ -600,7 +600,7 @@ Comprehensive metrics collection:
 }
 ```
 
-## STIX Output Examples
+## STIX Output Format
 
 ### STIX 1.x Package (XML)
 
@@ -611,7 +611,7 @@ Comprehensive metrics collection:
   </stix:STIX_Header>
   <stix:Indicators>
     <stix:Indicator>
-      <indicator:Title>domain: malicious.example.com</indicator:Title>
+      <indicator:Title>domain: malicious-c2-server.net</indicator:Title>
       <indicator:Description>Context: APT28 Phishing Campaign
 [WARNINGLIST OVERRIDE] Score 70/50: High-value threat actor: APT28</indicator:Description>
       <indicator:Confidence>
@@ -620,7 +620,7 @@ Comprehensive metrics collection:
       <indicator:Observable>
         <cybox:Object>
           <cybox:Properties xsi:type="DomainNameObj:DomainNameObjectType">
-            <DomainNameObj:Value>malicious.example.com</DomainNameObj:Value>
+            <DomainNameObj:Value>malicious-c2-server.net</DomainNameObj:Value>
           </cybox:Properties>
         </cybox:Object>
       </indicator:Observable>
@@ -644,8 +644,8 @@ Comprehensive metrics collection:
       "id": "indicator--xyz789",
       "created": "2025-10-08T10:00:00.000Z",
       "modified": "2025-10-08T10:00:00.000Z",
-      "name": "domain: malicious.example.com",
-      "pattern": "[domain-name:value = 'malicious.example.com']",
+      "name": "domain: malicious-c2-server.net",
+      "pattern": "[domain-name:value = 'malicious-c2-server.net']",
       "pattern_type": "stix",
       "valid_from": "2025-10-08T10:00:00.000Z",
       "confidence": 75,
@@ -1018,7 +1018,7 @@ MIT License - See LICENSE file for details
 
 - **Issues**: https://github.com/00gxd14g/cti-misp-stix-pipeline/issues
 - **Discussions**: https://github.com/00gxd14g/cti-misp-stix-pipeline/discussions
-- **Email**: soc@example.com
+- **Email**: security@yourdomain.com
 
 ## Acknowledgments
 

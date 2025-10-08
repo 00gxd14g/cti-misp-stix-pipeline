@@ -127,7 +127,7 @@ Types:
 - `test`: Adding or updating tests
 - `chore`: Maintenance tasks
 
-Example:
+Sample commit:
 ```
 feat(stix2): Add support for STIX 2.1 Sighting objects
 
@@ -165,7 +165,7 @@ pytest tests/test_processor.py::test_warninglist_override
 - Mock external services (MISP, TAXII, Redis)
 - Aim for >80% code coverage
 
-Example:
+Sample commit:
 ```python
 def test_warninglist_override_high_confidence_actor():
     """Test that warninglist is overridden for high-confidence APT actors."""
@@ -210,7 +210,7 @@ def test_warninglist_override_high_confidence_actor():
    - Clear title describing the change
    - Detailed description of what and why
    - Reference to related issues
-   - Screenshots/examples if applicable
+   - Screenshots/demonstrations if applicable
 
 6. **Address review feedback** promptly
 
@@ -278,7 +278,7 @@ We welcome feature requests! Please:
 1. **Check existing issues** to avoid duplicates
 2. **Describe the use case** clearly
 3. **Explain the benefit** to users
-4. **Provide examples** if possible
+4. **Provide use cases** if possible
 5. **Consider implementation** complexity
 
 ### Feature Request Template
@@ -325,7 +325,7 @@ If you have questions:
 
 - Open a [Discussion](https://github.com/00gxd14g/cti-misp-stix-pipeline/discussions)
 - Join our community chat (if available)
-- Email: soc@example.com
+- Email: security@yourdomain.com
 
 ## License
 

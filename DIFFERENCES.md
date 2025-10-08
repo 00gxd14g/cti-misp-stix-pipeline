@@ -135,7 +135,7 @@ events = misp.search(
 - No filtering of benign infrastructure
 - High false positive rate
 
-**Example Issues:**
+**Common Issues:**
 ```
 Processing:
   10.0.0.1 → Private IP (useless outside local network)
@@ -175,7 +175,7 @@ Override Score Calculation:
 Threshold: 50 (configurable)
 ```
 
-**Example Scenarios:**
+**Usage Scenarios:**
 
 | IOC | Warninglist | Context | v1 Behavior | v2 Behavior |
 |-----|-------------|---------|-------------|-------------|
@@ -232,7 +232,7 @@ indicator.add_indicated_campaign(campaign)
 - Sector targeting
 - Confidence scoring
 
-**Example Output Comparison:**
+**Output Comparison:**
 
 **v1 Output:**
 ```xml
@@ -300,7 +300,7 @@ class IOCGraph:
 - Finds kill chain paths
 - Enables graph visualization
 
-**Example:**
+**Implementation:**
 ```
 Threat Cluster Analysis:
   Cluster 1 (APT28): 47 IOCs
@@ -349,7 +349,7 @@ def _check_legitimate_service_abuse(attr, context):
 - Adds special labels in STIX output
 - Tracks abuse metrics
 
-**Example Detection:**
+**Detection Method:**
 ```
 IOC: github.com/badactor/malware-repo
 Warninglist: github-domains (would block)
@@ -461,7 +461,7 @@ class Config:
 vim config.ini
 
 # Option 2: Environment variables
-export MISP_URL="https://misp.example.com"
+export MISP_URL="https://your-misp-server.com"
 export MISP_KEY="secret-key"
 
 # Option 3: Mix
@@ -831,21 +831,21 @@ Convert hardcoded values to config.ini:
 **v1 (hardcoded):**
 ```python
 misp_key = "abc123..."
-misp_url = "https://misp.example.com"
+misp_url = "https://your-misp-server.com"
 tag = "APT"
-url = "http://taxii.example.com"
+url = "http://your-taxii-server.com"
 ```
 
 **v2 (config.ini):**
 ```ini
 [MISP]
-url = https://misp.example.com
+url = https://your-misp-server.com
 key = abc123...
 verify_ssl = true
 
 [TAXII]
 version = 1.x
-taxii1_server = http://taxii.example.com
+taxii1_server = http://your-taxii1-server.com
 taxii1_discovery = /services/discovery
 taxii1_inbox = /services/inbox
 username = admin
@@ -924,7 +924,7 @@ EOF
 ```ini
 [TAXII]
 version = both  # Enable dual TAXII
-taxii2_server = https://taxii2.example.com
+taxii2_server = https://your-taxii2-server.com
 taxii2_api_root = /api/v21/
 taxii2_collection = my-collection-id
 
@@ -1154,5 +1154,5 @@ For most production deployments, **v2 is strongly recommended** due to its super
 
 For migration assistance:
 - Open an issue: https://github.com/00gxd14g/cti-misp-stix-pipeline/issues
-- Email: soc@example.com
+- Email: security@yourdomain.com
 - See [README.md](README.md) for detailed v2 documentation
