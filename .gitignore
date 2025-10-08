@@ -1,0 +1,86 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# UV package manager
+.uv/
+uv.lock
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Project specific
+config.ini
+*.log
+*.xml
+*.json
+!pyproject.toml
+!package.json
+last_processed_timestamp.txt
+processed_attribute_ids.txt
+pipeline_state.json
+stix_package.xml
+stix1_package.xml
+stix2_bundle.json
+threat_intel_pipeline.log
+result.log
+
+# Redis dumps
+dump.rdb
+
+# Environment variables
+.env
+.env.local
+
+# Secrets
+*_key.txt
+*_password.txt
+credentials.json
+secrets.yaml
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+.~*
