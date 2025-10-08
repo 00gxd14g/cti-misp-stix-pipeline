@@ -1,5 +1,13 @@
 # MISP to STIX/TAXII Threat Intelligence Pipeline v3.0.0
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![STIX 1.x](https://img.shields.io/badge/STIX-1.x-green.svg)](https://stixproject.github.io/)
+[![STIX 2.1](https://img.shields.io/badge/STIX-2.1-green.svg)](https://oasis-open.github.io/cti-documentation/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![GitHub issues](https://img.shields.io/github/issues/00gxd14g/cti-misp-stix-pipeline)](https://github.com/00gxd14g/cti-misp-stix-pipeline/issues)
+[![GitHub stars](https://img.shields.io/github/stars/00gxd14g/cti-misp-stix-pipeline)](https://github.com/00gxd14g/cti-misp-stix-pipeline/stargazers)
+
 A production-grade threat intelligence pipeline that extracts Indicators of Compromise (IOCs) from MISP and distributes them via TAXII servers in both STIX 1.x and STIX 2.1 formats.
 
 ## Features
@@ -80,8 +88,8 @@ A production-grade threat intelligence pipeline that extracts Indicators of Comp
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Clone the repository
-git clone https://github.com/yourusername/misp-stix-taxii-pipeline.git
-cd misp-stix-taxii-pipeline
+git clone https://github.com/00gxd14g/cti-misp-stix-pipeline.git
+cd cti-misp-stix-pipeline
 
 # Create virtual environment and install
 uv venv
@@ -1008,8 +1016,8 @@ MIT License - See LICENSE file for details
 
 ## Support
 
-- **Issues**: https://github.com/yourusername/misp-stix-taxii-pipeline/issues
-- **Discussions**: https://github.com/yourusername/misp-stix-taxii-pipeline/discussions
+- **Issues**: https://github.com/00gxd14g/cti-misp-stix-pipeline/issues
+- **Discussions**: https://github.com/00gxd14g/cti-misp-stix-pipeline/discussions
 - **Email**: soc@example.com
 
 ## Acknowledgments

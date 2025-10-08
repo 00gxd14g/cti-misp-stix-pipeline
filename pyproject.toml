@@ -109,11 +109,11 @@ test = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/misp-stix-taxii-pipeline"
-Documentation = "https://github.com/yourusername/misp-stix-taxii-pipeline/blob/main/README.md"
-Repository = "https://github.com/yourusername/misp-stix-taxii-pipeline"
-Issues = "https://github.com/yourusername/misp-stix-taxii-pipeline/issues"
-Changelog = "https://github.com/yourusername/misp-stix-taxii-pipeline/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/00gxd14g/cti-misp-stix-pipeline"
+Documentation = "https://github.com/00gxd14g/cti-misp-stix-pipeline/blob/main/README.md"
+Repository = "https://github.com/00gxd14g/cti-misp-stix-pipeline"
+Issues = "https://github.com/00gxd14g/cti-misp-stix-pipeline/issues"
+Changelog = "https://github.com/00gxd14g/cti-misp-stix-pipeline/blob/main/DIFFERENCES.md"
 
 [project.scripts]
 # V1 - Legacy basic converter

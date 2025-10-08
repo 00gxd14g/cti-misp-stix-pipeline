@@ -1153,6 +1153,6 @@ For most production deployments, **v2 is strongly recommended** due to its super
 ## Support
 
 For migration assistance:
-- Open an issue: https://github.com/yourusername/misp-stix-taxii-pipeline/issues
+- Open an issue: https://github.com/00gxd14g/cti-misp-stix-pipeline/issues
 - Email: soc@example.com
 - See [README.md](README.md) for detailed v2 documentation

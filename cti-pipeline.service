@@ -1,0 +1,58 @@
+[Unit]
+Description=MISP to STIX/TAXII Pipeline Service (v2)
+Documentation=https://github.com/00gxd14g/cti-misp-stix-pipeline
+After=network.target redis.service
+Wants=redis.service
+
+[Service]
+Type=simple
+User=cti
+Group=cti
+WorkingDirectory=/opt/cti-pipeline
+
+# Environment
+Environment="PYTHONUNBUFFERED=1"
+Environment="PYTHONDONTWRITEBYTECODE=1"
+
+# Virtual environment
+ExecStartPre=/bin/bash -c 'source /opt/cti-pipeline/.venv/bin/activate'
+
+# Main command - adjust tag as needed
+ExecStart=/opt/cti-pipeline/.venv/bin/python /opt/cti-pipeline/cti_misp_taxii.py \
+    --config /opt/cti-pipeline/config.ini \
+    --tag apt
+
+# Restart policy
+Restart=always
+RestartSec=30
+StartLimitInterval=200
+StartLimitBurst=5
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=cti-pipeline
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/cti-pipeline/logs /opt/cti-pipeline/data
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictRealtime=true
+RestrictNamespaces=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+
+# Resource limits
+LimitNOFILE=65536
+TasksMax=256
+MemoryMax=2G
+CPUQuota=200%
+
+[Install]
+WantedBy=multi-user.target

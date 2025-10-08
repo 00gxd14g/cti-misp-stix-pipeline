@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: cti-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    networks:
+      - cti-network
+
+  cti-pipeline:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cti-pipeline
+    restart: unless-stopped
+    depends_on:
+      redis:
+        condition: service_healthy
+    environment:
+      # MISP Configuration
+      - MISP_URL=${MISP_URL}
+      - MISP_KEY=${MISP_KEY}
+      - MISP_VERIFY_SSL=${MISP_VERIFY_SSL:-true}
+
+      # TAXII Configuration
+      - TAXII_VERSION=${TAXII_VERSION:-both}
+      - TAXII1_SERVER=${TAXII1_SERVER}
+      - TAXII1_DISCOVERY=${TAXII1_DISCOVERY:-/services/discovery}
+      - TAXII1_INBOX=${TAXII1_INBOX:-/services/inbox}
+      - TAXII2_SERVER=${TAXII2_SERVER}
+      - TAXII2_API_ROOT=${TAXII2_API_ROOT:-/api/v21/}
+      - TAXII2_COLLECTION=${TAXII2_COLLECTION}
+      - TAXII_USER=${TAXII_USER}
+      - TAXII_PASS=${TAXII_PASS}
+
+      # Redis Configuration
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=${REDIS_DB:-0}
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    volumes:
+      - ./config.ini:/data/config.ini:ro
+      - pipeline_data:/data
+      - ./logs:/app/logs
+    networks:
+      - cti-network
+    command: ["python", "-u", "cti_misp_taxii.py", "--config", "/data/config.ini", "--tag", "${MISP_TAG:-apt}"]
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  redis_data:
+    driver: local
+  pipeline_data:
+    driver: local
+
+networks:
+  cti-network:
+    driver: bridge

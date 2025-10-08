@@ -1,0 +1,68 @@
+# MISP to STIX/TAXII Pipeline Configuration
+# Copy this file to config.ini and fill in your values
+
+[MISP]
+# MISP server configuration
+url = https://your-misp-instance.com
+key = YOUR_MISP_API_KEY_HERE
+verify_ssl = true
+timeout = 30
+
+[TAXII]
+# TAXII server version support: '1.x', '2.1', or 'both'
+version = both
+
+# TAXII 1.x configuration
+taxii1_server = http://your-taxii1-server.com
+taxii1_discovery = /services/discovery
+taxii1_inbox = /services/inbox
+
+# TAXII 2.1 configuration
+taxii2_server = https://your-taxii2-server.com
+taxii2_api_root = /api/v21/
+taxii2_collection = your-collection-id
+
+# Authentication (shared for both versions)
+username = taxii_user
+password = taxii_password
+verify_ssl = true
+
+[REDIS]
+# Redis configuration for state management
+host = localhost
+port = 6379
+db = 0
+password =
+ttl_days = 7
+
+[PROCESSING]
+# Time window for processing events (days)
+window_days = 90
+
+# Historical data retention (days)
+historical_days = 365
+
+# Batch processing size
+batch_size = 100
+
+# Rate limiting
+rate_limit_calls = 10
+rate_limit_period = 60
+
+# Confidence threshold (0-100)
+confidence_threshold = 50
+
+# Warninglist configuration
+warninglist_check = true
+warninglist_override_threshold = 50
+
+# STIX version to generate: '1.x', '2.1', or 'both'
+stix_version = both
+
+[OUTPUT]
+# Save STIX packages to files
+save_stix1_file = true
+stix1_filename = stix1_package.xml
+
+save_stix2_file = true
+stix2_filename = stix2_bundle.json
